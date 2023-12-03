@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Ghibli" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+     <item name="colorPrimaryDark">@color/main_color</item>
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="colorPrimary">@color/dark_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="bottomNavigationStyle">
+            @style/Widget.MaterialComponents.BottomNavigationView.Colored
+        </item>
+        <item name="colorAccent">@color/yellow</item>
+
+    </style>
+
+    <style name="Theme.Ghibli" parent="Base.Theme.Ghibli" />
+</resources>

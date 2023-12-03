@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "826830430144",
+    "project_id": "ghibli-2676a",
+    "storage_bucket": "ghibli-2676a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826830430144:android:18b5233ddb4ae72d11f225",
+        "android_client_info": {
+          "package_name": "com.selincengiz.ghibli"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdbkHpXCy_6su0vlqAh2l0Z_8WLPLJ8Lo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

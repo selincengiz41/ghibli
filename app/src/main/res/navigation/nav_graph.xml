@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.selincengiz.ghibli.ui.search.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.selincengiz.ghibli.ui.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/splashToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.selincengiz.ghibli.ui.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/loginToRegister"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/loginToSearch"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.selincengiz.ghibli.ui.register.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/registerToLogin"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/registerToSearch"
+            app:destination="@id/searchFragment" />
+    </fragment>
+</navigation>

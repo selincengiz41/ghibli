@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_color"
+        tools:context=".ui.register.RegisterFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Register"
+                    android:textSize="@dimen/_40ssp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_100sdp"
+                    android:layout_marginStart="@dimen/_24sdp"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textAlignment="center"
+                    android:inputType="text"
+                    android:layout_marginTop="@dimen/_80sdp"
+                    android:layout_marginStart="@dimen/_24sdp"
+                    android:layout_marginEnd="@dimen/_24sdp"
+                    ></EditText>
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textAlignment="center"
+                    android:inputType="text"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_marginStart="@dimen/_24sdp"
+                    android:layout_marginEnd="@dimen/_24sdp"
+                    ></EditText>
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textAlignment="center"
+                    android:inputType="textPassword"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_marginStart="@dimen/_24sdp"
+                    android:layout_marginEnd="@dimen/_24sdp"
+                    ></EditText>
+
+                <EditText
+                    android:id="@+id/et_password_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:hint="Password Confirm"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textAlignment="center"
+                    android:inputType="textPassword"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_marginStart="@dimen/_24sdp"
+                    android:layout_marginEnd="@dimen/_24sdp"
+                    ></EditText>
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.Button"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_24sdp"
+                    android:background="@drawable/orange_button_background"
+                    android:textSize="@dimen/_14ssp"
+                    android:text="Register"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+
+
+
+                    ></androidx.appcompat.widget.AppCompatButton>
+
+                <TextView
+                    android:id="@+id/button_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account?"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_marginTop="@dimen/_16sdp">
+
+                </TextView>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <ProgressBar
+            android:id="@+id/progressBarRegister"
+            style="?android:attr/progressBarStyle"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
