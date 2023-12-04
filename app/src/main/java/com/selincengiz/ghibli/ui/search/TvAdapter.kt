@@ -66,5 +66,5 @@ class TvAdapter(private val itemListener: ItemTvListener) :
 }
 
 interface ItemTvListener {
-    fun onClicked(trendTv: Tv)
+    fun onClicked(tv: Tv)
 }

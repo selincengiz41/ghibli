@@ -8,13 +8,26 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.selincengiz.ghibli.R
 import com.selincengiz.ghibli.databinding.FragmentSplashBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
 
+    @Inject
+    lateinit var auth: FirebaseAuth
     private lateinit var binding: FragmentSplashBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (auth.currentUser != null) {
+            findNavController().navigate(SplashFragmentDirections.splashToSearch())
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

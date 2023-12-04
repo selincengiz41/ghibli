@@ -3,13 +3,14 @@ package com.selincengiz.ghibli.ui.search
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -19,6 +20,9 @@ import com.selincengiz.ghibli.common.SearchState
 import com.selincengiz.ghibli.databinding.FragmentSearchBinding
 import com.selincengiz.ghibli.domain.entities.Tv
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Timer
+import java.util.TimerTask
+
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(), ItemSliderListener, ItemTvListener {
@@ -27,8 +31,14 @@ class SearchFragment : Fragment(), ItemSliderListener, ItemTvListener {
     private val viewModel by viewModels<SearchViewModel>()
     private val adapter by lazy { SliderAdapter(this) }
     private val adapterTv by lazy { TvAdapter(this) }
-   private val adapterOnTheAirTv by lazy { TvAdapter(this) }
+    private val adapterOnTheAirTv by lazy { TvAdapter(this) }
     private val slideHandler = Handler()
+    var currentPage = 0
+    var timer: Timer? = null
+    val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
+
+    val PERIOD_MS: Long = 5000 // time in milliseconds between successive task executions.
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +48,7 @@ class SearchFragment : Fragment(), ItemSliderListener, ItemTvListener {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         viewPager()
         binding.trendingRecycler.adapter = adapterTv
-       binding.ontheairRecycler.adapter = adapterOnTheAirTv
+        binding.ontheairRecycler.adapter = adapterOnTheAirTv
 
 
         return binding.root
@@ -82,11 +92,43 @@ class SearchFragment : Fragment(), ItemSliderListener, ItemTvListener {
 
             }
 
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+
+                currentPage = position
+            }
+
+
         })
+
+        /*After setting the adapter use the timer */
+
+
+
+        timer = Timer() // This will create a new Thread
+
+        timer!!.schedule(object : TimerTask() {
+            // task to be scheduled
+            override fun run() {
+                handler.post(Update)
+            }
+        }, DELAY_MS, PERIOD_MS)
 
 
     }
-
+    val handler = Handler()
+    val Update = Runnable {
+        if (currentPage != adapter.itemCount - 1) {
+            currentPage++
+        } else {
+            currentPage = 0
+        }
+        binding.viewPager.setCurrentItem(currentPage, true)
+    }
     val slideRunnable = Runnable {
         kotlin.run {
             binding.viewPager.currentItem = binding.viewPager.currentItem
@@ -97,11 +139,13 @@ class SearchFragment : Fragment(), ItemSliderListener, ItemTvListener {
     override fun onPause() {
         super.onPause()
         slideHandler.removeCallbacks(slideRunnable)
+        handler.removeCallbacks(Update)
     }
 
     override fun onResume() {
         super.onResume()
         slideHandler.postDelayed(slideRunnable, 2000)
+        handler.postDelayed(Update,2000)
     }
 
     fun observe() {
@@ -128,7 +172,7 @@ class SearchFragment : Fragment(), ItemSliderListener, ItemTvListener {
                 }
 
                 is SearchState.OnTheAir -> {
-                  adapterOnTheAirTv.submitList(state.tv.subList(0, 20))
+                    adapterOnTheAirTv.submitList(state.tv.subList(0, 20))
                     binding.progressLayout.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.GONE
                 }
@@ -150,8 +194,9 @@ class SearchFragment : Fragment(), ItemSliderListener, ItemTvListener {
 
     }
 
-    override fun onClicked(discoverTv: Tv) {
+    override fun onClicked(tv: Tv) {
 
+        findNavController().navigate(SearchFragmentDirections.searchToDetail(tv))
     }
 
 

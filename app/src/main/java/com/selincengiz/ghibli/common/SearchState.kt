@@ -9,7 +9,6 @@ sealed interface SearchState {
     data class Popular(val tv: List<Tv>) : SearchState
     data class Error(val throwable: Throwable) : SearchState
     data class OnTheAir(val tv: List<Tv>) : SearchState
-    data class Cart(val message: String) : SearchState
-    data class Detail(val food: String) : SearchState
+
 
 }

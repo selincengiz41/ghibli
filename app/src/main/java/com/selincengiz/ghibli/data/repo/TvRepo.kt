@@ -1,11 +1,15 @@
 package com.selincengiz.ghibli.data.repo
 
 
+import android.util.Log
 import com.selincengiz.ghibli.common.Resource
 import com.selincengiz.ghibli.data.api.TMDBService
+import com.selincengiz.ghibli.data.entities.TvDetailRespond
 import java.lang.Exception
 import com.selincengiz.ghibli.domain.entities.Tv
+import com.selincengiz.ghibli.domain.entities.TvDetail
 import com.selincengiz.ghibli.domain.mapper.mapToTv
+import com.selincengiz.ghibli.domain.mapper.mapToTvDetail
 
 class TvRepo(
     private val TMDBService: TMDBService,
@@ -46,6 +50,15 @@ class TvRepo(
                 result.mapToTv()
 
             })
+        } catch (e: Exception) {
+
+            Resource.Error(e)
+        }
+    }
+
+    suspend fun getDetailTv(id:Int):Resource<TvDetail>{
+        return try {
+            Resource.Success(TMDBService.getDetailTv(id).mapToTvDetail())
         } catch (e: Exception) {
 
             Resource.Error(e)

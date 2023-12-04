@@ -1,8 +1,9 @@
 package com.selincengiz.ghibli.domain.mapper
 
 import com.selincengiz.ghibli.data.entities.Result
+import com.selincengiz.ghibli.data.entities.TvDetailRespond
 import com.selincengiz.ghibli.domain.entities.Tv
-
+import com.selincengiz.ghibli.domain.entities.TvDetail
 
 
 fun Result.mapToTv(): Tv {
@@ -21,7 +22,32 @@ fun Result.mapToTv(): Tv {
         popularity,
         posterPath,
         voteAverage,
-        voteCount
+        voteCount,
+        false
+    )
+}
+
+
+fun TvDetailRespond.mapToTvDetail(): TvDetail {
+    return TvDetail(
+        firstAirDate,
+        genres,
+        homepage,
+        id,
+        lastAirDate,
+        lastEpisodeToAir,
+        name,
+        nextEpisodeToAir,
+        numberOfEpisodes,
+        numberOfSeasons,
+        overview,
+        popularity,
+        posterPath,
+        seasons,
+        status,
+        voteAverage,
+        voteCount,
+        false
     )
 }
 

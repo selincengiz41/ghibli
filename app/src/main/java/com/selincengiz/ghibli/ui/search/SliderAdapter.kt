@@ -63,6 +63,6 @@ class SliderAdapter(private val itemListener: ItemSliderListener) :
 }
 
 interface ItemSliderListener {
-    fun onClicked(discoverTv: Tv)
+    fun onClicked(tv: Tv)
 
 }
