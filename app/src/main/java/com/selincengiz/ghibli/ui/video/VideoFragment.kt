@@ -37,8 +37,8 @@ class VideoFragment(private val video: TvVideo) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        with(binding) {
 
+        with(binding) {
 
             lifecycle.addObserver(youtubePlayerView)
            youtubePlayerView.initialize(object : AbstractYouTubePlayerListener() {
@@ -62,6 +62,8 @@ class VideoFragment(private val video: TvVideo) : Fragment() {
                        systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
                    }
                }
+
+
             })
 
             requireActivity().window!!.decorView.apply {

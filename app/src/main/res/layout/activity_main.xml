@@ -12,7 +12,7 @@
         <import type="android.view.View"></import>
     </data>
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
+    <com.selincengiz.ghibli.canvas.ClickableMotionLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/fragment_video_scene"
@@ -46,12 +46,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:clipChildren="false"
-                android:clipToPadding="false"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
 
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+    </com.selincengiz.ghibli.canvas.ClickableMotionLayout>
 </layout>
