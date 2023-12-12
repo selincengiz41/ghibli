@@ -10,8 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_8sdp"
-        android:padding="@dimen/_8sdp">
+        android:layout_margin="@dimen/_3sdp"
+        android:padding="@dimen/_2sdp">
 
 
         <TextView

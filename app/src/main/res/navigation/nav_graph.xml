@@ -52,5 +52,22 @@
         <argument
             android:name="tv"
             app:argType="com.selincengiz.ghibli.domain.entities.Tv" />
+        <action
+            android:id="@+id/detailToVideo"
+            app:destination="@id/videoFragment" />
+
     </fragment>
+    <fragment
+        android:id="@+id/viewFragment"
+        android:name="com.selincengiz.ghibli.ui.ViewFragment"
+        android:label="ViewFragment" />
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.selincengiz.ghibli.ui.video.VideoFragment"
+        android:label="VideoFragment" >
+        <argument
+            android:name="video"
+            app:argType="com.selincengiz.ghibli.domain.entities.TvVideo" />
+    </fragment>
+
 </navigation>

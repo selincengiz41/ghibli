@@ -1,13 +1,16 @@
 package com.selincengiz.ghibli.ui.detail
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Space
 import android.widget.Toast
+import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -15,26 +18,30 @@ import com.selincengiz.ghibli.R
 import com.selincengiz.ghibli.common.Constants
 import com.selincengiz.ghibli.common.DetailState
 import com.selincengiz.ghibli.common.Extensions.loadUrl
-import com.selincengiz.ghibli.common.SearchState
 import com.selincengiz.ghibli.data.entities.Genre
 import com.selincengiz.ghibli.databinding.FragmentDetailBinding
+import com.selincengiz.ghibli.domain.entities.TvVideo
+import com.selincengiz.ghibli.ui.video.VideoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class DetailFragment : Fragment(), ItemTvListener {
 
-    private lateinit var binding :FragmentDetailBinding
+@AndroidEntryPoint
+class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
+
+    private lateinit var binding: FragmentDetailBinding
     private val viewModel by viewModels<DetailViewModel>()
     private val args by navArgs<DetailFragmentArgs>()
     private val adapter by lazy { CategoryAdapter(this) }
+    private val adapterVideo by lazy { VideoAdapter(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding=DataBindingUtil.inflate(inflater,R.layout.fragment_detail, container, false)
-        binding.recyclerView.adapter=adapter
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+        binding.recyclerView.adapter = adapter
+        binding.videoRecycler.adapter = adapterVideo
         return binding.root
     }
 
@@ -42,6 +49,7 @@ class DetailFragment : Fragment(), ItemTvListener {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getTvDetail(args.tv.id!!)
+        viewModel.getVideoTv(args.tv.id!!)
         observe()
 
         binding.backButton.setOnClickListener {
@@ -49,8 +57,8 @@ class DetailFragment : Fragment(), ItemTvListener {
         }
     }
 
-    fun observe() = with(binding){
-        viewModel.detailState.observe(viewLifecycleOwner){state->
+    fun observe() = with(binding) {
+        viewModel.detailState.observe(viewLifecycleOwner) { state ->
 
             when (state) {
                 DetailState.Loading -> {
@@ -61,13 +69,23 @@ class DetailFragment : Fragment(), ItemTvListener {
 
                 is DetailState.Tv -> {
                     adapter.submitList(state.tv.genres)
-                    tvName.text=state.tv.name
-                    tvPoster.loadUrl(Constants.IMAGE_URL +state.tv.posterPath)
-                    tvSummary.text=state.tv.overview
-                    tvRate.text=state.tv.voteAverage.toString()
-                    tvHour.text=state.tv.firstAirDate
+                    tvName.text = state.tv.name
+                    tvPoster.loadUrl(Constants.IMAGE_URL + state.tv.posterPath)
+                    tvSummary.text = state.tv.overview
+                    tvRate.text = state.tv.voteAverage.toString()
+                    tvHour.text = state.tv.firstAirDate
                     detailLayout.visibility = View.VISIBLE
                     progressBar2.visibility = View.GONE
+                }
+
+                is DetailState.Video -> {
+                    val list: List<TvVideo> = state.videos.filter {
+                        it.site == "YouTube"
+                    }.map { it ->
+                        it.copy(photo = args.tv.posterPath)
+                    }
+
+                    adapterVideo.submitList(list)
                 }
 
 
@@ -76,7 +94,7 @@ class DetailFragment : Fragment(), ItemTvListener {
                     progressBar2.visibility = View.GONE
                     Toast.makeText(requireContext(), state.throwable.message, Toast.LENGTH_SHORT)
                         .show()
-                    Log.i("eor",state.throwable.message!!)
+                    Log.i("eor", state.throwable.message!!)
 
                 }
 
@@ -88,6 +106,22 @@ class DetailFragment : Fragment(), ItemTvListener {
     }
 
     override fun onClicked(genre: Genre) {
+
+    }
+
+    override fun onClicked(video: TvVideo) {
+        // Fragment'ı oluşturun
+       // requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+
+        val fragment = VideoFragment(video)
+
+        // Fragment'ı FrameLayout içine ekleyin
+       requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+
+
+     //   findNavController().navigate(DetailFragmentDirections.detailToVideo(video))
 
     }
 

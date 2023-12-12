@@ -8,8 +8,10 @@ import com.selincengiz.ghibli.data.entities.TvDetailRespond
 import java.lang.Exception
 import com.selincengiz.ghibli.domain.entities.Tv
 import com.selincengiz.ghibli.domain.entities.TvDetail
+import com.selincengiz.ghibli.domain.entities.TvVideo
 import com.selincengiz.ghibli.domain.mapper.mapToTv
 import com.selincengiz.ghibli.domain.mapper.mapToTvDetail
+import com.selincengiz.ghibli.domain.mapper.mapToTvVideo
 
 class TvRepo(
     private val TMDBService: TMDBService,
@@ -64,5 +66,18 @@ class TvRepo(
             Resource.Error(e)
         }
     }
+
+    suspend fun getVideoTv(id:Int):Resource<List<TvVideo>>{
+        return try {
+            Resource.Success(TMDBService.getVideoTv(id).results!!.map {it ->
+                it.mapToTvVideo()
+            })
+        } catch (e: Exception) {
+
+            Resource.Error(e)
+        }
+    }
+
+
 
 }

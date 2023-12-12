@@ -8,4 +8,5 @@ object Constants {
     const val POPULAR_TV = "tv/popular"
     const val ON_THE_AIR_TV = "tv/airing_today"
     const val DETAIL_TV="tv/{series_id}"
+    const val VIDEO_TV="https://api.themoviedb.org/3/tv/{series_id}/videos"
 }

@@ -39,4 +39,20 @@ class DetailViewModel @Inject constructor(
             }
         }
     }
+
+    fun getVideoTv(id:Int){
+        viewModelScope.launch {
+            _detailState.value = DetailState.Loading
+            val result = tvRepo.getVideoTv(id)
+            when (result) {
+                is Resource.Success -> {
+                    _detailState.value = DetailState.Video(result.data)
+                }
+
+                is Resource.Error -> {
+                    _detailState.value = DetailState.Error(result.throwable)
+                }
+            }
+        }
+    }
 }
