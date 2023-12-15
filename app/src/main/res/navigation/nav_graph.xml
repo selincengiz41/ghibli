@@ -69,5 +69,9 @@
             android:name="video"
             app:argType="com.selincengiz.ghibli.domain.entities.TvVideo" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.selincengiz.ghibli.ui.favorite.FavoriteFragment"
+        android:label="FavoriteFragment" />
 
 </navigation>

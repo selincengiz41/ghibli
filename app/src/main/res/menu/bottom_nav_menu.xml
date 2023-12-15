@@ -10,7 +10,7 @@
         android:iconTint="@color/white"
         app:showAsAction="always"></item>
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/favoriteFragment"
         android:icon="@drawable/btn_2"
         android:title="Favorite"
         app:showAsAction="always"></item>
@@ -21,7 +21,7 @@
         app:showAsAction="always"></item>
 
     <item
-        android:id="@+id/favoritesFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/btn_4"
         android:title="Profile"
         app:showAsAction="always"></item>

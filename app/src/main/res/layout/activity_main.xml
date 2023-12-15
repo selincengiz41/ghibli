@@ -9,14 +9,35 @@
             name="visibilityBottomNav"
             type="Boolean" />
 
+        <variable
+            name="visibilityVideo"
+            type="Boolean" />
+
         <import type="android.view.View"></import>
     </data>
 
-    <com.selincengiz.ghibli.canvas.ClickableMotionLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutDescription="@xml/fragment_video_scene"
-        tools:context=".ui.MainActivity">
+        <com.selincengiz.ghibli.canvas.ClickableMotionLayout
+            android:id="@+id/motion_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/fragment_video_scene"
+
+            tools:context=".ui.MainActivity"
+            >
+
+
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            app:labelVisibilityMode="labeled"
+            android:visibility="@{visibilityBottomNav==true ? View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/navHost"
@@ -30,27 +51,22 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/nav_graph" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_50sdp"
-            android:visibility="@{visibilityBottomNav==true ? View.VISIBLE:View.GONE}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu" />
+
 
 
             <FrameLayout
+
+
                 android:id="@+id/fragmentContainer"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:clipChildren="false"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-    </com.selincengiz.ghibli.canvas.ClickableMotionLayout>
+        </com.selincengiz.ghibli.canvas.ClickableMotionLayout>
+
+
 </layout>

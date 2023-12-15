@@ -1,6 +1,7 @@
 package com.selincengiz.ghibli.ui.detail
 
 import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Space
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -109,19 +113,22 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onClicked(video: TvVideo) {
         // Fragment'ı oluşturun
-       // requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+     // requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+
 
         val fragment = VideoFragment(video)
 
+  //  requireActivity().findViewById<MotionLayout>(R.id.motion_layout).setTransition(R.id.expanded,R.id.collapsed)
         // Fragment'ı FrameLayout içine ekleyin
        requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()
 
 
-     //   findNavController().navigate(DetailFragmentDirections.detailToVideo(video))
+
 
     }
 
