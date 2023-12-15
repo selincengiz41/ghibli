@@ -1,8 +1,6 @@
 package com.selincengiz.ghibli.di
 
-import com.selincengiz.ghibli.data.api.TMDBService
 import com.selincengiz.ghibli.data.repo.AuthRepo
-import com.selincengiz.ghibli.data.repo.TvRepo
 import com.selincengiz.ghibli.domain.usecase.LoginUseCase
 import com.selincengiz.ghibli.domain.usecase.RegisterUseCase
 import dagger.Module

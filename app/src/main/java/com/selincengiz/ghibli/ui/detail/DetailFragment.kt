@@ -1,18 +1,18 @@
 package com.selincengiz.ghibli.ui.detail
 
-import android.content.pm.ActivityInfo
+
+import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.LightingColorFilter
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Space
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,6 +25,7 @@ import com.selincengiz.ghibli.common.Extensions.loadUrl
 import com.selincengiz.ghibli.data.entities.Genre
 import com.selincengiz.ghibli.databinding.FragmentDetailBinding
 import com.selincengiz.ghibli.domain.entities.TvVideo
+import com.selincengiz.ghibli.domain.mapper.mapToFavoriteTv
 import com.selincengiz.ghibli.ui.video.VideoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,13 +38,14 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
     private val args by navArgs<DetailFragmentArgs>()
     private val adapter by lazy { CategoryAdapter(this) }
     private val adapterVideo by lazy { VideoAdapter(this) }
+    private lateinit var  myIcon:Drawable
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+        binding = DataBindingUtil.inflate(inflater, com.selincengiz.ghibli.R.layout.fragment_detail, container, false)
         binding.recyclerView.adapter = adapter
         binding.videoRecycler.adapter = adapterVideo
         return binding.root
@@ -56,8 +58,29 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
         viewModel.getVideoTv(args.tv.id!!)
         observe()
 
+         myIcon = resources.getDrawable(com.selincengiz.ghibli.R.drawable.faved)
+        val filter: ColorFilter = LightingColorFilter(Color.YELLOW, Color.YELLOW)
+        myIcon.colorFilter = filter
+
+
         binding.backButton.setOnClickListener {
             findNavController().navigateUp()
+        }
+        binding.favButton.setOnClickListener {
+            if(binding.isFavorite!!){
+                viewModel.deleteFavorite(args.tv.mapToFavoriteTv())
+                binding.isFavorite=false
+                val icon = resources.getDrawable(com.selincengiz.ghibli.R.drawable.fav)
+
+                binding.favButton.setImageDrawable(icon)
+            }
+            else{
+                viewModel.addFavorite(args.tv.mapToFavoriteTv())
+                binding.isFavorite=true
+                binding.favButton.setImageDrawable(myIcon)
+
+            }
+            binding.favButton.requestLayout()
         }
     }
 
@@ -80,6 +103,25 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
                     tvHour.text = state.tv.firstAirDate
                     detailLayout.visibility = View.VISIBLE
                     progressBar2.visibility = View.GONE
+                    viewModel.isFavorite(state.tv.id!!)
+                }
+
+                is DetailState.IsFavorite ->{
+                    detailLayout.visibility = View.VISIBLE
+                    progressBar2.visibility = View.GONE
+                    isFavorite=state.favorite
+                    if(state.favorite!!)
+                    {
+
+                        binding.favButton.setImageDrawable(myIcon)
+                    }
+                    else{
+                        val icon = resources.getDrawable(com.selincengiz.ghibli.R.drawable.fav)
+
+                        binding.favButton.setImageDrawable(icon)
+                    }
+
+
                 }
 
                 is DetailState.Video -> {
@@ -90,6 +132,8 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
                     }
 
                     adapterVideo.submitList(list)
+                    detailLayout.visibility = View.VISIBLE
+                    progressBar2.visibility = View.GONE
                 }
 
 
@@ -115,14 +159,10 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onClicked(video: TvVideo) {
-        // Fragment'ı oluşturun
-     // requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
-
 
         val fragment = VideoFragment(video)
 
-  //  requireActivity().findViewById<MotionLayout>(R.id.motion_layout).setTransition(R.id.expanded,R.id.collapsed)
-        // Fragment'ı FrameLayout içine ekleyin
+
        requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()

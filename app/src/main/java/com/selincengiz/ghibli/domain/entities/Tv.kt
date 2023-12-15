@@ -1,6 +1,9 @@
 package com.selincengiz.ghibli.domain.entities
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -20,5 +23,6 @@ data class Tv(
     val posterPath: String?,
     val voteAverage: Double?,
     val voteCount: Int?,
-    val isFavorite:Boolean?
-):Parcelable
+    val isFavorite: Boolean?
+
+) : Parcelable

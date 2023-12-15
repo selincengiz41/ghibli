@@ -3,7 +3,7 @@ package com.selincengiz.ghibli.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.selincengiz.ghibli.common.Constants.BASE_URL
-import com.selincengiz.ghibli.data.api.TMDBService
+import com.selincengiz.ghibli.data.source.remote.TMDBService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

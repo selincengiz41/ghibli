@@ -72,6 +72,10 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.selincengiz.ghibli.ui.favorite.FavoriteFragment"
-        android:label="FavoriteFragment" />
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/favoriteToDetail"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
 </navigation>

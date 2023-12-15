@@ -1,5 +1,6 @@
 package com.selincengiz.ghibli.domain.mapper
 
+import com.selincengiz.ghibli.data.entities.FavoriteTv
 import com.selincengiz.ghibli.data.entities.Result
 import com.selincengiz.ghibli.data.entities.ResultX
 import com.selincengiz.ghibli.data.entities.TvDetailRespond
@@ -52,21 +53,54 @@ fun TvDetailRespond.mapToTvDetail(): TvDetail {
         false
     )
 }
-    fun ResultX.mapToTvVideo(): TvVideo {
-        return TvVideo(
-            id,
-            iso31661,
-            iso6391,
-            key,
-            name,
-            official,
-            publishedAt,
-            site,
-            size,
-            type,
-            null
-            )
-    }
+
+fun ResultX.mapToTvVideo(): TvVideo {
+    return TvVideo(
+        id,
+        iso31661,
+        iso6391,
+        key,
+        name,
+        official,
+        publishedAt,
+        site,
+        size,
+        type,
+        null
+    )
+}
+
+fun FavoriteTv.mapToTv(): Tv {
+    return Tv(
+        null,
+        null,
+        null,
+        null,
+        id,
+        null,
+        name,
+        null,
+        null,
+        null,
+        null,
+        null,
+        posterPath,
+        null,
+        null,
+        false
+    )
+}
+
+fun Tv.mapToFavoriteTv(): FavoriteTv {
+    return FavoriteTv(
+
+        id,
+        posterPath,
+        name,
+
+
+        )
+}
 
 
 

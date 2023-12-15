@@ -1,4 +1,4 @@
-package com.selincengiz.ghibli.data.api
+package com.selincengiz.ghibli.data.source.remote
 
 
 import com.selincengiz.ghibli.common.Constants.DETAIL_TV

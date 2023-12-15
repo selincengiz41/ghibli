@@ -1,10 +1,8 @@
 package com.selincengiz.ghibli.data.repo
 
 
-import android.util.Log
 import com.selincengiz.ghibli.common.Resource
-import com.selincengiz.ghibli.data.api.TMDBService
-import com.selincengiz.ghibli.data.entities.TvDetailRespond
+import com.selincengiz.ghibli.data.source.remote.TMDBService
 import java.lang.Exception
 import com.selincengiz.ghibli.domain.entities.Tv
 import com.selincengiz.ghibli.domain.entities.TvDetail

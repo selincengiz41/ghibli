@@ -1,9 +1,13 @@
 package com.selincengiz.ghibli.domain.entities
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import com.selincengiz.ghibli.data.entities.Genre
 import com.selincengiz.ghibli.data.entities.NextEpisodeToAir
 import com.selincengiz.ghibli.data.entities.Season
+
 
 data class TvDetail(
     val firstAirDate: String?,

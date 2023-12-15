@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="isFavorite"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,10 +78,12 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/oval_btn_background"
                         android:padding="@dimen/_8sdp"
+
                         android:src="@drawable/fav"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                       >
 
                     </ImageView>
                 </androidx.constraintlayout.widget.ConstraintLayout>

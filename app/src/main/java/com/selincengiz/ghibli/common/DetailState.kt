@@ -8,6 +8,7 @@ import com.selincengiz.ghibli.domain.entities.TvVideo
 sealed interface DetailState{
     object Loading : DetailState
     data class Tv(val tv: TvDetail) : DetailState
+    data class IsFavorite(val favorite: Boolean) : DetailState
     data class Video(val videos :List<TvVideo>):DetailState
     data class Error(val throwable: Throwable) : DetailState
 

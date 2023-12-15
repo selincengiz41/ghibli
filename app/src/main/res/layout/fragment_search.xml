@@ -89,6 +89,7 @@
                             android:orientation="horizontal"
                             android:paddingHorizontal="@dimen/_10sdp"
                             android:paddingBottom="@dimen/_30sdp"
+                            tools:listitem="@layout/item_tv"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -122,6 +123,7 @@
                             android:layout_height="match_parent"
                             android:clipToPadding="false"
                             android:orientation="horizontal"
+                            tools:listitem="@layout/item_tv"
                             android:paddingHorizontal="@dimen/_10sdp"
                             android:paddingBottom="@dimen/_30sdp"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -136,6 +138,7 @@
 
 
             </ScrollView>
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
