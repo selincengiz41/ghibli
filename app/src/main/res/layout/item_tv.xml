@@ -9,6 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginHorizontal="@dimen/_5sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_170sdp">
 

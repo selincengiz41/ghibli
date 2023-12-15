@@ -77,5 +77,13 @@
             android:id="@+id/favoriteToDetail"
             app:destination="@id/detailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/seekFragment"
+        android:name="com.selincengiz.ghibli.ui.seek.SeekFragment"
+        android:label="SeekFragment" >
+        <action
+            android:id="@+id/seekToDetail"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
 </navigation>

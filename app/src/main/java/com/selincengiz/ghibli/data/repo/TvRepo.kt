@@ -30,6 +30,19 @@ class TvRepo(
         }
     }
 
+    suspend fun getSeekTv(query:String): Resource<List<Tv>> {
+
+        return try {
+            Resource.Success(TMDBService.getSeekTv(query).results!!.map { result ->
+                result.mapToTv()
+
+            })
+        } catch (e: Exception) {
+
+            Resource.Error(e)
+        }
+    }
+
     suspend fun getPopularTv(): Resource<List<Tv>> {
 
         return try {

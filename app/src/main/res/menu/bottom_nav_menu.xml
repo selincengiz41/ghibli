@@ -15,14 +15,10 @@
         android:title="Favorite"
         app:showAsAction="always"></item>
     <item
-        android:id="@+id/cartFragment"
-        android:icon="@drawable/btn_3"
-        android:title="Cart"
+        android:id="@+id/seekFragment"
+        android:icon="@drawable/search"
+        android:title="Search"
         app:showAsAction="always"></item>
 
-    <item
-        android:id="@+id/homeFragment"
-        android:icon="@drawable/btn_4"
-        android:title="Profile"
-        app:showAsAction="always"></item>
+
 </menu>

@@ -5,6 +5,7 @@ import com.selincengiz.ghibli.common.Constants.DETAIL_TV
 import com.selincengiz.ghibli.common.Constants.DISCOVER_TV
 import com.selincengiz.ghibli.common.Constants.ON_THE_AIR_TV
 import com.selincengiz.ghibli.common.Constants.POPULAR_TV
+import com.selincengiz.ghibli.common.Constants.SEEK_TV
 import com.selincengiz.ghibli.common.Constants.VIDEO_TV
 import com.selincengiz.ghibli.data.entities.TvDetailRespond
 import com.selincengiz.ghibli.data.entities.TvRespond
@@ -12,6 +13,7 @@ import com.selincengiz.ghibli.data.entities.TvVideoResponse
 
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface TMDBService {
 
@@ -29,4 +31,7 @@ interface TMDBService {
 
     @GET(VIDEO_TV)
     suspend fun getVideoTv(@Path("series_id") id :Int): TvVideoResponse
+
+    @GET(SEEK_TV)
+    suspend fun getSeekTv(@Query("query") query:String): TvRespond
 }

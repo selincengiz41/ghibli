@@ -115,6 +115,13 @@ class MainActivity : AppCompatActivity() {
 
                     }
 
+                    R.id.seekFragment -> {
+                        visibilityBottomNav = true
+
+
+
+                    }
+
                     else -> {
                         visibilityBottomNav = false
 

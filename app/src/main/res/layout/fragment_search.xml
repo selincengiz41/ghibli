@@ -30,29 +30,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <SearchView
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
-                        android:layout_margin="@dimen/_14sdp"
-                        android:background="@drawable/edittext_background"
-                        android:iconifiedByDefault="false"
-                        android:paddingStart="@dimen/_6sdp"
-                        android:queryBackground="@null"
-                        android:queryHint="Search Movies.."
-                        android:searchHintIcon="@drawable/search"
-                        android:searchIcon="@drawable/search"
-
-
-                        ></SearchView>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_30sdp"
                         android:layout_height="@dimen/_160sdp">
 
                         <androidx.viewpager2.widget.ViewPager2
                             android:id="@+id/viewPager"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+
                             android:paddingHorizontal="@dimen/_30sdp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
