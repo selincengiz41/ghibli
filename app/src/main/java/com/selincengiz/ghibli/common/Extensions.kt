@@ -16,6 +16,11 @@ object Extensions {
         Glide.with(this.context).load(url).into(this)
 
     }
+    fun ImageView.loadUrl(url: Uri?) {
+
+        Glide.with(this.context).load(url).circleCrop().into(this)
+
+    }
 
     fun ImageView.loadUrl(url: String?, requestOptions: RequestOptions) {
 

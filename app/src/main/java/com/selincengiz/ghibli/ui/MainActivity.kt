@@ -121,6 +121,12 @@ class MainActivity : AppCompatActivity() {
 
 
                     }
+                    R.id.profileFragment2 -> {
+                        visibilityBottomNav = true
+
+
+
+                    }
 
                     else -> {
                         visibilityBottomNav = false

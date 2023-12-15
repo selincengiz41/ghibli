@@ -21,7 +21,9 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/splashToSearch"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -32,7 +34,9 @@
             app:destination="@id/registerFragment" />
         <action
             android:id="@+id/loginToSearch"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -43,7 +47,9 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/registerToSearch"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -84,6 +90,16 @@
         <action
             android:id="@+id/seekToDetail"
             app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="com.selincengiz.ghibli.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/profileToSplash"
+            app:destination="@id/splashFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

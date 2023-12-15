@@ -20,5 +20,11 @@
         android:title="Search"
         app:showAsAction="always"></item>
 
+    <item
+        android:id="@+id/profileFragment2"
+        android:icon="@drawable/btn_4"
+        android:title="Profile"
+        app:showAsAction="always"></item>
+
 
 </menu>

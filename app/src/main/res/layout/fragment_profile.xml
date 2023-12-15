@@ -1,21 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="profileFunctions"
+            type="com.selincengiz.ghibli.ui.profile.ProfileFragment" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/main_color"
         tools:context=".ui.profile.ProfileFragment">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:id="@+id/tv_namee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:text="Hello Selin"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/_24ssp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
 
-    </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_logout"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:background="@drawable/orange_button_background"
+            android:text="Log out"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:onClick="@{()->profileFunctions.imageViewClicked()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_namee"
+            app:srcCompat="@drawable/btn_4" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="selincengiz41@gmail.com"
+            android:textSize="@dimen/_15ssp"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_60sdp"
+            app:layout_constraintStart_toStartOf="@+id/tv_namee"
+            app:layout_constraintTop_toBottomOf="@+id/iv_pic" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
