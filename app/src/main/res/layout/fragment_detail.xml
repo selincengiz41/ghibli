@@ -94,9 +94,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="@dimen/_24sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_poster"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_poster">
 
                     <TextView
                         android:id="@+id/tv_rate"
@@ -138,13 +138,13 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
                     android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
                     tools:itemCount="3"
                     tools:listitem="@layout/item_category" />

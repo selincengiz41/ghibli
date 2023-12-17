@@ -24,7 +24,6 @@ class SeekViewModel @Inject constructor(
 
     fun getSeekTv(query:String) {
         viewModelScope.launch {
-            _seekState.value = SeekState.Loading
             val result = tvRepo.getSeekTv(query)
             when (result) {
                 is Resource.Success -> {
