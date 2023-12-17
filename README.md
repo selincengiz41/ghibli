@@ -6,19 +6,18 @@ This application is developed for watching movies or series. You can discover ne
 <!-- Screenshots -->
 ## 📸 Screenshots
 <p align="center">
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/c9fc98a6-cfac-4a67-a8bd-68b2c9225cee" width="275" height="550"/> 
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/7b83cdd5-bbf0-47c3-ba45-ecdc17bd5d23" width="275" height="550"/> 
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/7cbe312f-447c-4229-88ce-3bef19b9d8ce" width="275" height="550"/>
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/89679e93-3e58-4a12-87fc-5c55c87cc1dc" width="275" height="550"/>
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/894801b6-9af5-432f-a9bd-ef9374487f8a" width="275" height="550"/>
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/5419113f-0e96-4af8-8e41-5555b10d04c5" width="275" height="550"/>
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/87e5b1d5-2bd2-4fb7-841e-9ab820ac882d" width="275" height="550"/>
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/0fa18db2-e27c-4268-9a89-a62e2c219246" width="275" height="550"/>
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/fed67277-086d-4b75-827b-5009107d82af" width="275" height="550"/>
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/f5c187fe-21c8-40db-bbcb-e2a8b23510df" width="275" height="550"/> 
-  <img src="https://github.com/selincengiz41/dinefeast/assets/60012262/614a72ed-f873-4c1f-9f79-55e54e6b61be" width="275" height="550"/> 
-  
-  
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/552e3b50-cb07-40c8-a57f-c49e3443996e" width="130" height="300"/> 
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/23e726f9-7fa3-4df7-957b-7bbb4639dd44" width="130" height="300"/> 
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/1b85e344-ae76-4f31-b3ed-be522ffb9422" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/8e5e75cf-8015-47ce-8d7a-ab790da97daf" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/da77eb44-a79d-488c-82fc-d04dafc6124b" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/b49b76e7-e46a-4fc3-ab44-f55bc767c4c9" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/ec71984d-b8bd-4109-89c2-4ff70bac0a9a" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/5e0df45d-5999-44f8-9514-72686c296e3b" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/92de9c31-edab-4b17-b35d-ff6fb32dc238" width="130" height="300"/>
+
+
+
 
 </p>
 
