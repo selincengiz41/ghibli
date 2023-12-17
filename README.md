@@ -23,7 +23,8 @@ This application is developed for watching movies or series. You can discover ne
 
 
 ## 📽 Video 
-- https://drive.google.com/file/d/10elKAIumdHEyEe2YANDUpfP6X_p_iLSx/view?usp=drivesdk
+
+- https://drive.google.com/file/d/17vlPxRm7cLb-evNkxNribdqwqXLnX3tu/view?usp=sharing
 
 <br>
 
