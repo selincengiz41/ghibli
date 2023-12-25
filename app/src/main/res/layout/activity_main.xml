@@ -16,13 +16,13 @@
         <import type="android.view.View"></import>
     </data>
 
-        <com.selincengiz.ghibli.canvas.ClickableMotionLayout
+        <com.selincengiz.ghibli.ui.ClickableMotionLayout
             android:id="@+id/motion_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutDescription="@xml/fragment_video_scene"
 
-            tools:context=".ui.MainActivity"
+            tools:context=".presentation.MainActivity"
             >
 
 
@@ -66,7 +66,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-        </com.selincengiz.ghibli.canvas.ClickableMotionLayout>
+        </com.selincengiz.ghibli.ui.ClickableMotionLayout>
 
 
 </layout>

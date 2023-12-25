@@ -10,17 +10,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ViewFragment">
+        tools:context=".presentation.ViewFragment">
 
-        <com.selincengiz.ghibli.canvas.MyView
+
+
+        <com.selincengiz.paint_view.PaintView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"></com.selincengiz.paint_view.PaintView>
 
-        </com.selincengiz.ghibli.canvas.MyView>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

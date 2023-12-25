@@ -11,12 +11,12 @@ plugins {
 
 android {
     namespace 'com.selincengiz.ghibli'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.selincengiz.ghibli"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -51,6 +51,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
 
 
 
@@ -100,6 +102,8 @@ dependencies {
     //Youtube player
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
 
+
+    implementation 'com.github.selincengiz41:paint-view:1.0.7'
 
 
 
