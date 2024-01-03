@@ -50,6 +50,9 @@ class RegisterFragment : Fragment() {
             viewModel.registerState.collectLatest  { state ->
 
                 when (state) {
+                   is RegisterState.Entry ->{
+                        binding.progressBarRegister.visibility = View.GONE
+                    }
                     is RegisterState.Loading -> {
                         binding.progressBarRegister.visibility = View.VISIBLE
                     }

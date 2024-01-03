@@ -17,7 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val tvRepo: TvRepo,
-    private val favoriteRepo: FavoriteRepo
+    private val favoriteRepo: FavoriteRepo,
+
 
 ) : ViewModel() {
 

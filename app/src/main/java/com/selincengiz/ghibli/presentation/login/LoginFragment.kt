@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.selincengiz.ghibli.R
 import com.selincengiz.ghibli.common.LoginState
+import com.selincengiz.ghibli.common.RegisterState
 import com.selincengiz.ghibli.databinding.FragmentLoginBinding
 import com.selincengiz.ghibli.presentation.login.LoginFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,6 +55,9 @@ class LoginFragment : Fragment() {
             viewModel.loginState.collectLatest { state ->
 
                 when (state) {
+                    is LoginState.Entry ->{
+                        binding.progressBarLogin.visibility = View.GONE
+                    }
                     is LoginState.Loading -> {
                         binding.progressBarLogin.visibility = View.VISIBLE
                     }

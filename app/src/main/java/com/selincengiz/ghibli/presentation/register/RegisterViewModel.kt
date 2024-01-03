@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val registerUseCase: RegisterUseCase) :
     ViewModel() {
-    private var _registerState = MutableStateFlow<RegisterState>(RegisterState.Loading)
+    private var _registerState = MutableStateFlow<RegisterState>(RegisterState.Entry)
     val registerState: StateFlow<RegisterState>
         get() = _registerState.asStateFlow()
 
