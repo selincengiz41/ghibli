@@ -6,19 +6,16 @@ This application is developed for watching movies or series. You can discover ne
 <!-- Screenshots -->
 ## 📸 Screenshots
 <p align="center">
-  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/23e726f9-7fa3-4df7-957b-7bbb4639dd44" width="130" height="300"/> 
-  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/552e3b50-cb07-40c8-a57f-c49e3443996e" width="130" height="300"/> 
-  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/92de9c31-edab-4b17-b35d-ff6fb32dc238" width="130" height="300"/>
-  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/dfa4ec6a-f0c5-4725-b601-04c2fbbb1c98" width="130" height="300"/>
-  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/da77eb44-a79d-488c-82fc-d04dafc6124b" width="130" height="300"/>
-  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/b49b76e7-e46a-4fc3-ab44-f55bc767c4c9" width="130" height="300"/>
-  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/ec71984d-b8bd-4109-89c2-4ff70bac0a9a" width="130" height="300"/>
-  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/1b85e344-ae76-4f31-b3ed-be522ffb9422" width="300" height="130"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/0229c3b4-a4b4-41a5-beba-fba473e8b5d5" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/b3d1392d-4cbe-4260-ac46-f36a2b9d2eab" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/bc4274e0-1b56-4698-bd63-184c3a0c80c6" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/50d29bdd-796b-4adc-adcf-a105d535c9bc" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/3a1285cd-9a6f-4a04-b34d-bc7838f46fb9" width="130" height="300"/> 
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/226c44c7-b949-44a9-8962-c7dcd4763a03" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/e622fab5-76b3-4f3a-831f-fe9e0a092f37" width="130" height="300"/> 
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/9aa33e25-e939-43e0-8a57-0d36faae9315" width="130" height="300"/>
+  <img src="https://github.com/selincengiz41/ghibli/assets/60012262/52d08348-f639-4c95-b528-a6f705fae775" width="130" height="300"/>
  
-
-
-
-
 </p>
 
 
