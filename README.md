@@ -32,7 +32,8 @@ This application is developed for watching movies or series. You can discover ne
 - Hilt
 - Coroutines
 - Retrofit
-- Room 
+- Room
+- Flow
 - Data Binding 
 - Glide
 - SDP/SSP Library
