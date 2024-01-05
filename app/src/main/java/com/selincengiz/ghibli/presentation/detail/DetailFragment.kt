@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.motion.widget.MotionScene
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -23,12 +24,14 @@ import com.selincengiz.ghibli.R
 import com.selincengiz.ghibli.common.Constants
 import com.selincengiz.ghibli.common.DetailState
 import com.selincengiz.ghibli.common.Extensions.loadUrl
+import com.selincengiz.ghibli.common.IsFullScreen.isFullScreen
 import com.selincengiz.ghibli.data.entities.Genre
 import com.selincengiz.ghibli.databinding.FragmentDetailBinding
 import com.selincengiz.ghibli.domain.entities.TvVideo
 import com.selincengiz.ghibli.domain.mapper.mapToFavoriteTv
 import com.selincengiz.ghibli.presentation.video.VideoFragment
 import com.selincengiz.ghibli.presentation.detail.DetailFragmentArgs
+import com.selincengiz.ghibli.ui.ClickableMotionLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -173,6 +176,10 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
        requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()
+
+     requireActivity().findViewById<ClickableMotionLayout>(R.id.motion_layout).transitionToStart()
+        isFullScreen=true
+
 
 
 
