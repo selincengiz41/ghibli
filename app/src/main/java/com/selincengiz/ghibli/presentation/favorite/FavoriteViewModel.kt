@@ -1,13 +1,12 @@
 package com.selincengiz.ghibli.presentation.favorite
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.selincengiz.ghibli.common.FavoriteState
 import com.selincengiz.ghibli.common.Resource
-import com.selincengiz.ghibli.data.repo.FavoriteRepo
+import com.selincengiz.ghibli.data.repo.FavoriteRepoImpl
 import com.selincengiz.ghibli.domain.mapper.mapToTv
+import com.selincengiz.ghibli.domain.repo.FavoriteRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

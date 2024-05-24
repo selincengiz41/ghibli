@@ -57,7 +57,11 @@ class SeekFragment : Fragment(), ItemListener, SearchView.OnQueryTextListener {
                     }
 
                     is SeekState.Seek -> {
-                        adapter.submitList(state.tv.subList(0, 15))
+                        if (state.tv.size < 15) {
+                            adapter.submitList(state.tv)
+                        } else {
+                            adapter.submitList(state.tv.subList(0, 15))
+                        }
                         binding.progressLayout.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.GONE
                     }
@@ -66,7 +70,11 @@ class SeekFragment : Fragment(), ItemListener, SearchView.OnQueryTextListener {
                     is SeekState.Error -> {
                         binding.progressLayout.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), state.throwable.message, Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            requireContext(),
+                            state.throwable.message,
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
 
 

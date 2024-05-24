@@ -17,17 +17,18 @@ import com.selincengiz.ghibli.domain.entities.TvVideo
 
 class VideoFragment(private val video: TvVideo) : Fragment() {
 
-   private lateinit var binding:FragmentVideoBinding
-  // private val args by navArgs<VideoFragmentArgs>()
+    private lateinit var binding: FragmentVideoBinding
+
+    // private val args by navArgs<VideoFragmentArgs>()
     private lateinit var rtspUrl: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding=DataBindingUtil.inflate(inflater,R.layout.fragment_video, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_video, container, false)
 
- return binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,50 +39,51 @@ class VideoFragment(private val video: TvVideo) : Fragment() {
         with(binding) {
 
             lifecycle.addObserver(youtubePlayerView)
-           youtubePlayerView.initialize(object : AbstractYouTubePlayerListener() {
+            youtubePlayerView.initialize(object : AbstractYouTubePlayerListener() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
 
                     youTubePlayer.loadVideo(video.key!!, 0f)
                 }
 
-                override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+                override fun onError(
+                    youTubePlayer: YouTubePlayer,
+                    error: PlayerConstants.PlayerError
+                ) {
                     super.onError(youTubePlayer, error)
                     Toast.makeText(requireContext(), error.name, Toast.LENGTH_SHORT).show()
                 }
 
-               override fun onStateChange(
-                   youTubePlayer: YouTubePlayer,
-                   state: PlayerConstants.PlayerState
-               ) {
-                   super.onStateChange(youTubePlayer, state)
-                   requireActivity().window!!.decorView.apply {
+                override fun onStateChange(
+                    youTubePlayer: YouTubePlayer,
+                    state: PlayerConstants.PlayerState
+                ) {
+                    super.onStateChange(youTubePlayer, state)
+                    requireActivity().window!!.decorView.apply {
 
-                       systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
-                   }
-               }
+                        systemUiVisibility =
+                            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+                    }
+                }
 
+                
 
             })
 
             requireActivity().window!!.decorView.apply {
 
-                systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+                systemUiVisibility =
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
             }
-
 
 
         }
     }
 
 
-
-
     override fun onDestroy() {
         super.onDestroy()
         binding.youtubePlayerView.release();
     }
-
-
 
 
 }

@@ -44,14 +44,19 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
     private val args by navArgs<DetailFragmentArgs>()
     private val adapter by lazy { CategoryAdapter(this) }
     private val adapterVideo by lazy { VideoAdapter(this) }
-    private lateinit var  myIcon:Drawable
+    private lateinit var myIcon: Drawable
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, com.selincengiz.ghibli.R.layout.fragment_detail, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            com.selincengiz.ghibli.R.layout.fragment_detail,
+            container,
+            false
+        )
         binding.recyclerView.adapter = adapter
         binding.videoRecycler.adapter = adapterVideo
         return binding.root
@@ -65,7 +70,7 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
 
         observe()
 
-         myIcon = resources.getDrawable(com.selincengiz.ghibli.R.drawable.faved)
+        myIcon = resources.getDrawable(com.selincengiz.ghibli.R.drawable.faved)
         val filter: ColorFilter = LightingColorFilter(Color.YELLOW, Color.YELLOW)
         myIcon.colorFilter = filter
 
@@ -74,16 +79,15 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
             findNavController().navigateUp()
         }
         binding.favButton.setOnClickListener {
-            if(binding.isFavorite!!){
+            if (binding.isFavorite!!) {
                 viewModel.deleteFavorite(args.tv.mapToFavoriteTv())
-                binding.isFavorite=false
+                binding.isFavorite = false
                 val icon = resources.getDrawable(com.selincengiz.ghibli.R.drawable.fav)
 
                 binding.favButton.setImageDrawable(icon)
-            }
-            else{
+            } else {
                 viewModel.addFavorite(args.tv.mapToFavoriteTv())
-                binding.isFavorite=true
+                binding.isFavorite = true
                 binding.favButton.setImageDrawable(myIcon)
 
             }
@@ -91,75 +95,77 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
         }
     }
 
-     fun observe() = with(binding) {
-         lifecycleScope.launchWhenStarted {
-             viewModel.detailState.collectLatest { state ->
+    fun observe() = with(binding) {
+        lifecycleScope.launchWhenStarted {
+            viewModel.detailState.collectLatest { state ->
 
-                 when (state) {
-                     DetailState.Loading -> {
+                when (state) {
+                    DetailState.Loading -> {
 
-                         detailLayout.visibility = View.GONE
-                         progressBar2.visibility = View.VISIBLE
-                     }
+                        detailLayout.visibility = View.GONE
+                        progressBar2.visibility = View.VISIBLE
+                    }
 
-                     is DetailState.Tv -> {
-                         adapter.submitList(state.tv.genres)
-                         tvName.text = state.tv.name
-                         tvPoster.loadUrl(Constants.IMAGE_URL + state.tv.posterPath)
-                         tvSummary.text = state.tv.overview
-                         tvRate.text = state.tv.voteAverage.toString()
-                         tvHour.text = state.tv.firstAirDate
-                         detailLayout.visibility = View.VISIBLE
-                         progressBar2.visibility = View.GONE
-                         viewModel.isFavorite(state.tv.id!!)
-                     }
+                    is DetailState.Tv -> {
+                        adapter.submitList(state.tv.genres)
+                        tvName.text = state.tv.name
+                        tvPoster.loadUrl(Constants.IMAGE_URL + state.tv.posterPath)
+                        tvSummary.text = state.tv.overview
+                        tvRate.text = state.tv.voteAverage.toString()
+                        tvHour.text = state.tv.firstAirDate
+                        detailLayout.visibility = View.VISIBLE
+                        progressBar2.visibility = View.GONE
+                        viewModel.isFavorite(state.tv.id!!)
+                    }
 
-                     is DetailState.IsFavorite ->{
-                         detailLayout.visibility = View.VISIBLE
-                         progressBar2.visibility = View.GONE
-                         isFavorite=state.favorite
-                         if(state.favorite!!)
-                         {
+                    is DetailState.IsFavorite -> {
+                        detailLayout.visibility = View.VISIBLE
+                        progressBar2.visibility = View.GONE
+                        isFavorite = state.favorite
+                        if (state.favorite!!) {
 
-                             binding.favButton.setImageDrawable(myIcon)
-                         }
-                         else{
-                             val icon = resources.getDrawable(com.selincengiz.ghibli.R.drawable.fav)
+                            binding.favButton.setImageDrawable(myIcon)
+                        } else {
+                            val icon = resources.getDrawable(com.selincengiz.ghibli.R.drawable.fav)
 
-                             binding.favButton.setImageDrawable(icon)
-                         }
+                            binding.favButton.setImageDrawable(icon)
+                        }
 
 
-                     }
+                    }
 
-                     is DetailState.Video -> {
-                         val list: List<TvVideo> = state.videos.filter {
-                             it.site == "YouTube"
-                         }.map { it ->
-                             it.copy(photo = args.tv.posterPath)
-                         }
+                    is DetailState.Video -> {
+                        val list: List<TvVideo> = state.videos.filter {
+                            it.site == "YouTube"
+                        }.map { it ->
+                            it.copy(photo = args.tv.posterPath)
+                        }
 
-                         adapterVideo.submitList(list)
-                         detailLayout.visibility = View.VISIBLE
-                         progressBar2.visibility = View.GONE
-                     }
+                        adapterVideo.submitList(list)
+                        detailLayout.visibility = View.VISIBLE
+                        progressBar2.visibility = View.GONE
+                    }
 
 
-                     is DetailState.Error -> {
-                         detailLayout.visibility = View.VISIBLE
-                         progressBar2.visibility = View.GONE
-                         Toast.makeText(requireContext(), state.throwable.message, Toast.LENGTH_SHORT)
-                             .show()
-                         Log.i("eor", state.throwable.message!!)
+                    is DetailState.Error -> {
+                        detailLayout.visibility = View.VISIBLE
+                        progressBar2.visibility = View.GONE
+                        Toast.makeText(
+                            requireContext(),
+                            state.throwable.message,
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                        Log.i("eor", state.throwable.message!!)
 
-                     }
+                    }
 
-                     else -> {
+                    else -> {
 
-                     }
-                 }
-             }
-         }
+                    }
+                }
+            }
+        }
 
     }
 
@@ -173,15 +179,14 @@ class DetailFragment : Fragment(), ItemTvListener, ItemVideoListener {
         val fragment = VideoFragment(video)
 
 
-       requireActivity().supportFragmentManager.beginTransaction()
+        requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()
 
-     requireActivity().findViewById<ClickableMotionLayout>(R.id.motion_layout).transitionToStart()
-        isFullScreen=true
+        requireActivity().findViewById<ClickableMotionLayout>(R.id.motion_layout)
+            .transitionToStart()
 
-
-
+        isFullScreen = true
 
 
     }

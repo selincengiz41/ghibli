@@ -1,23 +1,18 @@
 package com.selincengiz.ghibli.data.repo
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import com.google.firebase.auth.FirebaseAuth
 import com.selincengiz.ghibli.common.Resource
 import com.selincengiz.ghibli.data.entities.FavoriteTv
 import com.selincengiz.ghibli.data.source.local.TvDao
-import com.selincengiz.ghibli.domain.entities.Tv
+import com.selincengiz.ghibli.domain.repo.FavoriteRepo
 
 import java.lang.Exception
 
-class FavoriteRepo(
+class FavoriteRepoImpl(
 
     private val tvDao: TvDao,
-) {
+) :FavoriteRepo{
 
-    suspend fun getFavorites(): Resource<List<FavoriteTv>> {
+    override suspend fun getFavorites(): Resource<List<FavoriteTv>> {
 
         return try {
            Resource.Success(tvDao.getFavorites())
@@ -26,13 +21,13 @@ class FavoriteRepo(
         }
     }
 
-    suspend fun addFavorites(tv: FavoriteTv) {
+    override suspend fun addFavorites(tv: FavoriteTv) {
 
         tvDao.addFavorites(tv)
     }
 
 
-    suspend fun deleteFavorites(tv: FavoriteTv) {
+    override suspend fun deleteFavorites(tv: FavoriteTv) {
         tvDao.deleteFavorites(tv)
     }
 

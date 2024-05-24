@@ -1,8 +1,12 @@
 package com.selincengiz.ghibli.presentation
 
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.translation.ViewTranslationCallback
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.databinding.DataBindingUtil
@@ -23,34 +27,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        // binding.fragmentContainer.visibility=View.GONE
-        //bottomNav settings
+
         bottomNav()
+
+
+
 
 
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
                 // invoke required action
                 if (currentId == R.id.collapsed) {
-                    binding.visibilityBottomNav = true
-                    binding.bottomNavigationView.requestLayout()
 
-                    isFullScreen=false
+
+                    isFullScreen = false
+                    binding.motionLayout.setTransition(R.id.collapsed, R.id.gone);
+                    binding.motionLayout.progress = 0f
+                    return
                 }
                 if (currentId == R.id.expanded) {
-                    binding.visibilityBottomNav = false
-                    binding.bottomNavigationView.requestLayout()
-                    isFullScreen=true
+
+                    isFullScreen = true
 
                 }
-
                 if (currentId == R.id.gone) {
+
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer,ViewFragment()).commit()
-
-
+                        .replace(R.id.fragmentContainer, ViewFragment()).commit()
                 }
-                Log.i("motionLayout", currentId.toString())
 
             }
 
@@ -60,7 +64,6 @@ class MainActivity : AppCompatActivity() {
                 endId: Int,
                 progress: Float
             ) {
-                Log.i("motionLayout", startId.toString())
 
             }
 
@@ -69,7 +72,6 @@ class MainActivity : AppCompatActivity() {
                 startId: Int,
                 endId: Int
             ) {
-                Log.i("motionLayout", startId.toString())
 
             }
 
@@ -79,23 +81,13 @@ class MainActivity : AppCompatActivity() {
                 positive: Boolean,
                 progress: Float
             ) {
-                if (triggerId == R.id.collapsed) {
-                    binding.visibilityBottomNav = true
-                    binding.bottomNavigationView.requestLayout()
 
-                }
-                if (triggerId == R.id.expanded) {
-                    binding.visibilityBottomNav = false
-                    binding.bottomNavigationView.requestLayout()
-
-
-                }
-                Log.i("motionLayout", triggerId.toString())
 
             }
         })
 
     }
+
     override fun onBackPressed() {
         // Eğer detay ekranındaysa, liste ekranına geri dön
         if (isFullScreen) {

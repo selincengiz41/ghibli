@@ -10,14 +10,15 @@ import com.selincengiz.ghibli.domain.entities.TvVideo
 import com.selincengiz.ghibli.domain.mapper.mapToTv
 import com.selincengiz.ghibli.domain.mapper.mapToTvDetail
 import com.selincengiz.ghibli.domain.mapper.mapToTvVideo
+import com.selincengiz.ghibli.domain.repo.TvRepo
 
-class TvRepo(
+class TvRepoImpl(
     private val TMDBService: TMDBService,
 
-    ) {
+    ) :TvRepo{
 
 
-    suspend fun getDiscoverTv(): Resource<List<Tv>> {
+    override suspend fun getDiscoverTv(): Resource<List<Tv>> {
 
         return try {
             Resource.Success(TMDBService.getDiscoverTv().results!!.map { result ->
@@ -30,7 +31,7 @@ class TvRepo(
         }
     }
 
-    suspend fun getSeekTv(query:String): Resource<List<Tv>> {
+    override suspend fun getSeekTv(query:String): Resource<List<Tv>> {
 
         return try {
             Resource.Success(TMDBService.getSeekTv(query).results!!.map { result ->
@@ -43,7 +44,7 @@ class TvRepo(
         }
     }
 
-    suspend fun getPopularTv(): Resource<List<Tv>> {
+    override suspend fun getPopularTv(): Resource<List<Tv>> {
 
         return try {
             Resource.Success(TMDBService.getPopularTv().results!!.map { result ->
@@ -56,7 +57,7 @@ class TvRepo(
         }
     }
 
-    suspend fun getOnTheAirTv(): Resource<List<Tv>> {
+    override suspend fun getOnTheAirTv(): Resource<List<Tv>> {
 
         return try {
             Resource.Success(TMDBService.getOnTheAirTv().results!!.map { result ->
@@ -69,7 +70,7 @@ class TvRepo(
         }
     }
 
-    suspend fun getDetailTv(id:Int):Resource<TvDetail>{
+    override suspend fun getDetailTv(id:Int):Resource<TvDetail>{
         return try {
             Resource.Success(TMDBService.getDetailTv(id).mapToTvDetail())
         } catch (e: Exception) {
@@ -78,7 +79,7 @@ class TvRepo(
         }
     }
 
-    suspend fun getVideoTv(id:Int):Resource<List<TvVideo>>{
+    override suspend fun getVideoTv(id:Int):Resource<List<TvVideo>>{
         return try {
             Resource.Success(TMDBService.getVideoTv(id).results!!.map {it ->
                 it.mapToTvVideo()

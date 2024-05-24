@@ -1,6 +1,7 @@
 package com.selincengiz.ghibli.di
 
-import com.selincengiz.ghibli.data.repo.AuthRepo
+import com.selincengiz.ghibli.data.repo.AuthRepoImpl
+import com.selincengiz.ghibli.domain.repo.AuthRepo
 import com.selincengiz.ghibli.domain.usecase.LoginUseCase
 import com.selincengiz.ghibli.domain.usecase.RegisterUseCase
 import dagger.Module

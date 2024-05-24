@@ -3,20 +3,13 @@ package com.selincengiz.ghibli.data.repo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.selincengiz.ghibli.common.Resource
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.selincengiz.ghibli.domain.repo.AuthRepo
 import kotlinx.coroutines.tasks.await
-import okhttp3.internal.wait
 
-class AuthRepo(private val auth: FirebaseAuth) {
+class AuthRepoImpl(private val auth: FirebaseAuth):AuthRepo {
 
 
-    suspend fun firebaseLogin(email: String, password: String): Resource<String> {
+    override suspend fun firebaseLogin(email: String, password: String): Resource<String> {
 
         return try {
 
@@ -38,7 +31,7 @@ class AuthRepo(private val auth: FirebaseAuth) {
     }
 
 
-    suspend fun firebaseRegister(email: String, password: String, name: String): Resource<String> {
+    override suspend fun firebaseRegister(email: String, password: String, name: String): Resource<String> {
 
         return try {
             val exception = auth.createUserWithEmailAndPassword(email, password).run {

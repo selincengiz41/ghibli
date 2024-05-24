@@ -15,7 +15,6 @@
             motion:touchRegionId="@+id/fragmentContainer"
             motion:maxAcceleration="200"
             motion:dragDirection="dragDown"
-
             motion:dragScale="@integer/material_motion_duration_short_1"
 
          />
@@ -54,7 +53,6 @@
         <OnSwipe
             motion:touchRegionId="@+id/fragmentContainer"
             motion:maxAcceleration="200"
-
             motion:dragDirection="dragUp"
             motion:dragScale="@integer/material_motion_duration_short_1"
             />
@@ -104,10 +102,10 @@
                 motion:framePosition="100"
                 motion:motionTarget="@id/fragmentContainer"/>
         </KeyFrameSet>
+
         <OnSwipe  motion:touchRegionId="@+id/fragmentContainer"
             motion:maxAcceleration="200"
             motion:dragDirection="dragDown"
-
             motion:dragScale="@integer/material_motion_duration_short_1" />
 
     </Transition>
@@ -124,7 +122,21 @@
             motion:menu="@menu/bottom_nav_menu"
             >
 
-            <PropertySet motion:visibilityMode="ignore"></PropertySet>
+            <PropertySet motion:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/navHost"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:defaultNavHost="true"
+            motion:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:navGraph="@navigation/nav_graph" >
+
+
         </Constraint>
         <Constraint
             android:id="@id/fragmentContainer"
@@ -137,9 +149,7 @@
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent">
 
-            <CustomAttribute
-                motion:customBoolean="true"
-                motion:attributeName="visibilityBottomNav" />
+
         </Constraint>
 
 
@@ -162,31 +172,43 @@
             motion:menu="@menu/bottom_nav_menu"
             >
 
-            <PropertySet motion:visibilityMode="ignore"></PropertySet>
+            <PropertySet motion:visibilityMode="ignore" />
         </Constraint>
         <Constraint
             android:id="@+id/fragmentContainer"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="@dimen/_100sdp"
             android:tag="collapsed"
+            motion:cornerAll="@dimen/_5sdp"
             android:visibility="visible"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_55sdp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toStartOf="parent">
 
-            <CustomAttribute
-                motion:customBoolean="true"
-                motion:attributeName="visibilityVideo" />
+
+
 
         </Constraint>
+        <Constraint
 
+            android:id="@+id/navHost"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:defaultNavHost="true"
+            motion:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:navGraph="@navigation/nav_graph" />
 
 
 
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/gone">
+    <ConstraintSet android:id="@+id/gone"
+        motion:deriveConstraintsFrom="@id/collapsed">
         <Constraint
             android:id="@+id/bottomNavigationView"
             android:layout_width="0dp"
@@ -198,19 +220,29 @@
             motion:menu="@menu/bottom_nav_menu"
             >
 
-            <PropertySet motion:visibilityMode="ignore"></PropertySet>
+            <PropertySet motion:visibilityMode="ignore" />
         </Constraint>
+        <Constraint
+
+            android:id="@+id/navHost"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:defaultNavHost="true"
+            motion:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:navGraph="@navigation/nav_graph" />
         <Constraint
             android:id="@+id/fragmentContainer"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="@dimen/_100sdp"
+            android:visibility="gone"
             android:tag="gone"
             motion:layout_constraintTop_toBottomOf="parent"
             motion:layout_constraintStart_toStartOf="parent">
 
-            <CustomAttribute
-                motion:customBoolean="true"
-                motion:attributeName="visibilityVideo" />
 
         </Constraint>
 
@@ -218,5 +250,6 @@
 
 
     </ConstraintSet>
+
 
 </MotionScene>

@@ -5,8 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.selincengiz.ghibli.common.DetailState
 import com.selincengiz.ghibli.common.Resource
 import com.selincengiz.ghibli.data.entities.FavoriteTv
-import com.selincengiz.ghibli.data.repo.FavoriteRepo
-import com.selincengiz.ghibli.data.repo.TvRepo
+import com.selincengiz.ghibli.data.repo.FavoriteRepoImpl
+import com.selincengiz.ghibli.data.repo.TvRepoImpl
+import com.selincengiz.ghibli.domain.repo.FavoriteRepo
+import com.selincengiz.ghibli.domain.repo.TvRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +22,7 @@ class DetailViewModel @Inject constructor(
     private val favoriteRepo: FavoriteRepo,
 
 
-) : ViewModel() {
+    ) : ViewModel() {
 
     private var _detailState =
         MutableStateFlow<DetailState>(DetailState.Loading)
@@ -68,13 +70,13 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-    fun addFavorite(tv:FavoriteTv){
+    fun addFavorite(tv: FavoriteTv){
         viewModelScope.launch {
         favoriteRepo.addFavorites(tv)
 
         }
     }
-    fun deleteFavorite(tv:FavoriteTv){
+    fun deleteFavorite(tv: FavoriteTv){
         viewModelScope.launch {
         favoriteRepo.deleteFavorites(tv)
 

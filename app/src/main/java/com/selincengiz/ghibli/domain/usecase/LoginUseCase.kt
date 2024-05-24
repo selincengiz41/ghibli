@@ -1,8 +1,8 @@
 package com.selincengiz.ghibli.domain.usecase
 
-import android.widget.Toast
 import com.selincengiz.ghibli.common.Resource
-import com.selincengiz.ghibli.data.repo.AuthRepo
+import com.selincengiz.ghibli.data.repo.AuthRepoImpl
+import com.selincengiz.ghibli.domain.repo.AuthRepo
 
 class LoginUseCase(private val authRepo: AuthRepo) {
 
