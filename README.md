@@ -39,6 +39,7 @@ This application is developed for watching movies or series. You can discover ne
 - SDP/SSP Library
 - Motion Layout
 - YouTubePlayerView
+- Clean Arch
 
 
 ## :pencil2: Dependency
